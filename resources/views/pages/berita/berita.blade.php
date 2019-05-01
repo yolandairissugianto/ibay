@@ -13,7 +13,7 @@
         <div class="x_panel">
           <div class="x_content">
             <table id="datatable" class="table table-striped table-bordered">
-            <a href="{{ route ('berita.create')}}" class="btn btn-primary btn-round btn-sm"><i class="fa fa-plus"></i>  Tambah</a>
+            <a href="{{ route ('admin.berita.create')}}" class="btn btn-primary btn-round btn-sm"><i class="fa fa-plus"></i>  Tambah</a>
               <thead>
                 <tr>
                   <th>No</th>
@@ -36,8 +36,8 @@
                   <td>Tiga Siswa SMK N 1 Slawi Menjadi Duta Lingkungan Hidup Kabupaten Tegal Tahun 2018</td>
                   <td>Bapak Kepala Sekolah SMK N 1 Slawi Drs. Sufian, M. Eng menyerahkan piala yang didapat oleh siswa pada acara pemilihan duta lingkungan hidup Kabupaten Tegal yang diselenggarakan oleh Dinas Lingkungan Hidup (DLH) Kabupaten Tegal pada tanggal 11 November 2018 di Pendopo Amangkurat, Kompleks Setda Kabupaten Tegal di Lapangan upacara SMK N 1 Slawi pada hari senin (19/11).</td>
                   <td>
-                        <a href="{{ route ('berita.edit')}}" class="btn btn-warning btn-round btn-sm"><i class="fa fa-edit"></i>  Edit</a>
-                        <a href="{{ route ('berita.create')}}" class="btn btn-danger btn-round btn-sm"><i class="fa fa-remove"></i>  Hapus</a>
+                        <a href="{{ route ('admin.berita.edit')}}" class="btn btn-warning btn-round btn-sm"><i class="fa fa-edit"></i>  Edit</a>
+                        <a href="{{ route ('admin.berita.create')}}" class="btn btn-danger btn-round btn-sm"><i class="fa fa-remove"></i>  Hapus</a>
                   </td>
                 </tr>
               </tbody>

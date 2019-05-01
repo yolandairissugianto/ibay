@@ -13,7 +13,7 @@
         <div class="x_panel">
           <div class="x_content">
             <table id="datatable" class="table table-striped table-bordered">
-            <a href="{{ route ('guru.create')}}" class="btn btn-primary btn-round btn-sm"><i class="fa fa-plus"></i>  Tambah</a>
+            <a href="{{ route ('admin.guru.create')}}" class="btn btn-primary btn-round btn-sm"><i class="fa fa-plus"></i>  Tambah</a>
               <thead>
                 <tr>
                   <th>Gambar</th>
@@ -38,8 +38,8 @@
                   <td>Tegal, 13 April 1961</td>
                   <td>Ilmu Pengetahuan Alam</td>
                   <td>
-                        <a href="{{ route ('guru.edit')}}" class="btn btn-warning btn-round btn-sm"><i class="fa fa-edit"></i>  Edit</a>
-                        <a href="{{ route ('guru.create')}}" class="btn btn-danger btn-round btn-sm"><i class="fa fa-remove"></i>  Hapus</a>
+                        <a href="{{ route ('admin.guru.edit')}}" class="btn btn-warning btn-round btn-sm"><i class="fa fa-edit"></i>  Edit</a>
+                        <a href="{{ route ('admin.guru.create')}}" class="btn btn-danger btn-round btn-sm"><i class="fa fa-remove"></i>  Hapus</a>
                   </td>
                 </tr>
               </tbody>

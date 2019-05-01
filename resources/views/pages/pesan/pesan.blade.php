@@ -75,7 +75,7 @@
       
       <!-- Modal footer -->
       <div class="modal-footer">
-        <a href="{{route('pesan')}}" class="btn btn-round btn-danger" data-dismiss="modal">Batal</a>
+        <a href="{{route('admin.pesan')}}" class="btn btn-round btn-danger" data-dismiss="modal">Batal</a>
       </div>
       
     </div>

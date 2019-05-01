@@ -37,31 +37,38 @@ Route::get('/hubungi-kami', function () {
     return view('front-end.hubungi_kami');
 })->name('hubungi_kami');
 
-Route::get('/admin/pesan', function () {
-    return view('pages.pesan.pesan');
-})->name('pesan');
+//Route::get('/admin/pesan', function () {
+//    return view('pages.pesan.pesan');
+//})->name('pesan');
 
-Route::get('/admin', function () {
-    return view('pages.dashboard');
-})->name('dashboard');
+//Route::get('/admin', function () {
+//    return view('pages.dashboard');
+//})->name('dashboard');
 
-Route::get('/admin/detail', function () {
-    return view('pages.pesan.detail_pesan');
-})->name('detail');
+//Route::get('/admin/detail', function () {
+//    return view('pages.pesan.detail_pesan');
+//})->name('detail');
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/admin/berita', 'BeritaController@index')->name('berita');
-Route::get('/admin/berita-create', 'BeritaController@create')->name('berita.create');
-Route::get('/admin/berita-edit', 'BeritaController@edit')->name('berita.edit');
+Route::prefix('admin')->group(function () {
+    Route::get('/dashboard', 'HomeController@index')->name('admin.dashboard');
+    Route::get('/', 'HomeController@index')->name('admin.dashboard');
 
-Route::get('/admin/guru', 'GuruController@index')->name('guru');
-Route::get('/admin/guru-create', 'GuruController@create')->name('guru.create');
-Route::get('/admin/guru-edit', 'GuruController@edit')->name('guru.edit');
+    Route::get('/berita', 'BeritaController@index')->name('admin.berita');
+    Route::get('/berita-create', 'BeritaController@create')->name('admin.berita.create');
+    Route::get('/berita-edit', 'BeritaController@edit')->name('admin.berita.edit');
 
-Route::get('/admin/siswa', 'SiswaController@index')->name('siswa');
-Route::get('/admin/siswa-create', 'SiswaController@create')->name('siswa.create');
-Route::get('/admin/siswa-edit', 'SiswaController@edit')->name('siswa.edit');
+    Route::get('/user', 'UserController@index')->name('admin.user');
+    Route::get('/user-create', 'UserController@create')->name('admin.user.create');
+    Route::get('/user-edit', 'UserController@edit')->name('admin.user.edit');
 
-Route::get('/admin/user', 'UserController@index')->name('user');
-Route::get('/admin/user-create', 'UserController@create')->name('user.create');
-Route::get('/admin/user-edit', 'UserController@edit')->name('user.edit');
+    Route::get('/guru', 'GuruController@index')->name('admin.guru');
+    Route::get('/guru-create', 'GuruController@create')->name('admin.guru.create');
+    Route::get('/guru-edit', 'GuruController@edit')->name('admin.guru.edit');
+
+    Route::get('/siswa', 'SiswaController@index')->name('admin.siswa');
+    Route::get('/siswa-create', 'SiswaController@create')->name('admin.siswa.create');
+    Route::get('/siswa-edit', 'SiswaController@edit')->name('admin.siswa.edit');
+
+
+    Route::get('/pesan', 'HomeController@pesan')->name('admin.pesan');
+});

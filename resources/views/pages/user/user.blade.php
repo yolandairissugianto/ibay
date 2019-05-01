@@ -13,7 +13,7 @@
         <div class="x_panel">
           <div class="x_content">
             <table id="datatable" class="table table-striped table-bordered">
-            <a href="{{ route ('user.create')}}" class="btn btn-primary btn-round btn-sm"><i class="fa fa-plus"></i>  Tambah</a>
+            <a href="{{ route ('admin.user.create')}}" class="btn btn-primary btn-round btn-sm"><i class="fa fa-plus"></i>  Tambah</a>
               <thead>
                 <tr>
                   <th>No</th>
@@ -30,7 +30,7 @@
                   <td>Yolanda Iris Sugianto</td>
                   <td>yolanda</td>
                   <td>
-                        <a href="{{ route ('user.edit')}}" class="btn btn-warning btn-round btn-sm"><i class="fa fa-edit"></i>  Edit</a>
+                        <a href="{{ route ('admin.user.edit')}}" class="btn btn-warning btn-round btn-sm"><i class="fa fa-edit"></i>  Edit</a>
                         <a href="" class="btn btn-danger btn-round btn-sm"><i class="fa fa-remove"></i>  Hapus</a>
                   </td>
                 </tr>

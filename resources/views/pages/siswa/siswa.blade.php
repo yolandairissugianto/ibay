@@ -13,7 +13,7 @@
         <div class="x_panel">
           <div class="x_content">
             <table id="datatable" class="table table-striped table-bordered">
-            <a href="{{ route ('siswa.create')}}" class="btn btn-primary btn-round btn-sm"><i class="fa fa-plus"></i>  Tambah</a>
+            <a href="{{ route ('admin.siswa.create')}}" class="btn btn-primary btn-round btn-sm"><i class="fa fa-plus"></i>  Tambah</a>
               <thead>
                 <tr>
                   <th>Gambar</th>
@@ -38,7 +38,7 @@
                   <td>XII PM 3</td>
                   <td>Ds. Purbayasa Rt 07/02</td>
                   <td>
-                        <a href="{{ route ('siswa.edit')}}" class="btn btn-warning btn-round btn-sm"><i class="fa fa-edit"></i>  Edit</a>
+                        <a href="{{ route ('admin.siswa.edit')}}" class="btn btn-warning btn-round btn-sm"><i class="fa fa-edit"></i>  Edit</a>
                         <a href="" class="btn btn-danger btn-round btn-sm"><i class="fa fa-remove"></i>  Hapus</a>
                   </td>
                 </tr>
