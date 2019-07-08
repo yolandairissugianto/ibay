@@ -11,35 +11,21 @@
 |
 */
 
-Route::get('/', function () {
-    return view('front-end.index');
-});
+Route::get('/', 'FrontEndController@beranda');
 
 Auth::routes();
 
-Route::get('/index', function () {
-    return view('front-end.index');
-})->name('beranda');
+Route::get('/index', 'FrontEndController@beranda')->name('beranda');
 
-Route::get('/berita', function () {
-    return view('front-end.berita_front');
-})->name('berita_front');
+Route::get('/berita', 'FrontEndController@berita')->name('berita_front');
 
-Route::get('/data-guru', function () {
-    return view('front-end.data_guru');
-})->name('data_guru');
+Route::get('/data-guru', 'FrontEndController@guru')->name('data_guru');
 
-Route::get('/data-siswa', function () {
-    return view('front-end.data_siswa');
-})->name('data_siswa');
+Route::get('/data-siswa', 'FrontEndController@siswa')->name('data_siswa');
 
-Route::get('/hubungi-kami', function () {
-    return view('front-end.hubungi_kami');
-})->name('hubungi_kami');
+Route::get('/hubungi-kami', 'FrontEndController@hubungiKami')->name('hubungi_kami');
 
-Route::get('/detail', function () {
-    return view('front-end.detail');
-})->name('detail');
+Route::get('/detail/{berita}', 'FrontEndController@detail')->name('detail');
 
 //Route::get('/admin/pesan', function () {
 //    return view('pages.pesan.pesan');

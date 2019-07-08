@@ -65,7 +65,7 @@
               <td>{{$guru->tempat_lahir}}, {{$guru->tanggal_lahir}}</td>
               <td>{{$guru->pengampu}}</td>
               <td>
-                    <a href="{{ route ('admin.guru.edit')}}" class="btn btn-warning btn-round btn-sm"><i class="fa fa-edit"></i>  Edit</a>
+                    <a href="{{ route ('admin.guru.edit', $guru->id)}}" class="btn btn-warning btn-round btn-sm"><i class="fa fa-edit"></i>  Edit</a>
                     <a href="{{ route ('admin.guru.create')}}" class="btn btn-danger btn-round btn-sm"><i class="fa fa-remove"></i>  Hapus</a>
               </td>
             </tr>
