@@ -14,33 +14,41 @@
             <div class="x_panel">
               <div class="x_content">
 
-                <form class="form-horizontal form-label-left" novalidate>
+                <form action="{{ route('admin.update.berita', $berita->id) }}" method="POST" class="form-horizontal form-label-left" novalidate enctype="multipart/form-data">
+                  @csrf
+                  {{ method_field('PATCH') }}
                   <span class="section">Berita</span>
                   <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="gambar">Gambar <span class="required">*</span>
+                    {{-- <p>{{$berita->gambar}}</p> --}}
+                    <center>
+                    <img src="{{ asset('images/'.$berita->gambar) }}" alt="Gambar Sebelumnya" style="width:370px; height:250px;">
+                    </center>
+                  </div>
+                  <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="gambar">Gambar <span class="required"></span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12 custom-file">
-                          <input type="file" id="gambar" name="gambar" required="required" class="form-control custom-file-input col-md-7 col-xs-12">
+                          <input type="file" id="gambar" name="gambar" class="form-control custom-file-input col-md-7 col-xs-12">
                         </div>
                       </div>
                   <div class="item form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="judul">Judul Berita <span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                      <input type="text" id="judul" name="judul" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
+                      <input value="{{ $berita->judul }}" type="text" id="judul" name="judul" required="required" class="form-control col-md-7 col-xs-12">
                     </div>
                   </div>
                   <div class="item form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea">Isi Berita <span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                      <textarea id="isi_berita" required="required" name="isi_berita" class="form-control col-md-7 col-xs-12"></textarea>
+                      <textarea id="isi_berita" required="required" name="isi_berita" class="form-control col-md-7 col-xs-12">{{ $berita->isi_berita }}</textarea>
                     </div>
                   </div>
                   <div class="ln_solid"></div>
                   <div class="form-group">
                     <div class="col-md-6 col-md-offset-3">
-                    <a href="{{route('berita')}}" class="btn btn-round btn-danger">Cancel</a>
+                    <a href="#" class="btn btn-round btn-danger">Cancel</a>
                       <button id="send" type="submit" class="btn btn-round btn-success">Submit</button>
                     </div>
                   </div>

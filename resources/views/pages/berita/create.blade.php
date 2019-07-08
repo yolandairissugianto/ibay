@@ -14,15 +14,16 @@
       <div class="x_panel">
         <div class="x_content">
 
-          <form class="form-horizontal form-label-left" novalidate>
+          <form method="POST" action="{{route('admin.store.berita')}}" class="form-horizontal form-label-left" novalidate enctype="multipart/form-data">
+            @csrf
             <span class="section">Berita</span>
             <div class="item form-group">
-                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="gambar">Gambar <span class="required">*</span>
-                  </label>
-                  <div class="col-md-6 col-sm-6 col-xs-12 custom-file">
-                    <input type="file" id="gambar" name="gambar" required="required" class="form-control custom-file-input col-md-7 col-xs-12">
-                  </div>
-                </div>
+              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="gambar">Gambar <span class="required">*</span>
+              </label>
+              <div class="col-md-6 col-sm-6 col-xs-12 custom-file">
+                <input type="file" id="gambar" name="gambar" required="required" class="form-control custom-file-input col-md-7 col-xs-12">
+              </div>
+            </div>
             <div class="item form-group">
               <label class="control-label col-md-3 col-sm-3 col-xs-12" for="judul">Judul Berita <span class="required">*</span>
               </label>
@@ -40,7 +41,7 @@
             <div class="ln_solid"></div>
             <div class="form-group">
               <div class="col-md-6 col-md-offset-3">
-              <a href="{{route('berita')}}" class="btn btn-round btn-danger">Batal</a>
+              <a href="#" class="btn btn-round btn-danger">Batal</a>
                 {{-- <button type="submit" class="btn btn-round btn-danger">Cancel</button> --}}
                 <button id="send" type="submit" class="btn btn-round btn-success">Simpan</button>
               </div>

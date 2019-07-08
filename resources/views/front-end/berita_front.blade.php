@@ -21,7 +21,7 @@
                             </div>
                             <!-- Post Content -->
                             <div class="post-content">
-                                <a href="#" class="headline">
+                                <a href="{{ route('detail')}}" class="headline">
                                     <h5>Tiga Siswa SMK N 1 Slawi Menjadi Duta Lingkungan Hidup Kabupaten Tegal Tahun 2018</h5>
                                 </a>
                                 <p>SLAWI - Bapak Kepala Sekolah SMK N 1 Slawi Drs. Sufian, M. Eng menyerahkan piala yang didapat oleh siswa pada acara pemilihan duta lingkungan hidup...</p>

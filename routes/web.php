@@ -37,6 +37,10 @@ Route::get('/hubungi-kami', function () {
     return view('front-end.hubungi_kami');
 })->name('hubungi_kami');
 
+Route::get('/detail', function () {
+    return view('front-end.detail');
+})->name('detail');
+
 //Route::get('/admin/pesan', function () {
 //    return view('pages.pesan.pesan');
 //})->name('pesan');
@@ -55,19 +59,28 @@ Route::prefix('admin')->group(function () {
 
     Route::get('/berita', 'BeritaController@index')->name('admin.berita');
     Route::get('/berita-create', 'BeritaController@create')->name('admin.berita.create');
-    Route::get('/berita-edit', 'BeritaController@edit')->name('admin.berita.edit');
-
-    Route::get('/user', 'UserController@index')->name('admin.user');
-    Route::get('/user-create', 'UserController@create')->name('admin.user.create');
-    Route::get('/user-edit', 'UserController@edit')->name('admin.user.edit');
+    Route::get('/berita-edit/{id}', 'BeritaController@edit')->name('admin.berita.edit');
+    Route::post('/berita', 'BeritaController@store')->name('admin.store.berita');
+    Route::patch('/berita-edit/{id}', 'BeritaController@update')->name('admin.update.berita');
+    Route::get('/berita-delete/{berita}', 'BeritaController@destroy')->name('admin.berita.delete');
+    
+    // Route::get('/user', 'UserController@index')->name('admin.user');
+    // Route::get('/user-create', 'UserController@create')->name('admin.user.create');
+    // Route::get('/user-edit', 'UserController@edit')->name('admin.user.edit');
 
     Route::get('/guru', 'GuruController@index')->name('admin.guru');
     Route::get('/guru-create', 'GuruController@create')->name('admin.guru.create');
-    Route::get('/guru-edit', 'GuruController@edit')->name('admin.guru.edit');
+    Route::get('/guru-edit/{id}', 'GuruController@edit')->name('admin.guru.edit');
+    Route::post('/guru', 'GuruController@store')->name('admin.store.guru');
+    Route::patch('/guru-edit/{id}', 'GuruController@update')->name('admin.update.guru');
+    Route::get('/guru-delete/{id}', 'GuruController@destroy')->name('admin.berita.guru');
 
     Route::get('/siswa', 'SiswaController@index')->name('admin.siswa');
     Route::get('/siswa-create', 'SiswaController@create')->name('admin.siswa.create');
-    Route::get('/siswa-edit', 'SiswaController@edit')->name('admin.siswa.edit');
+    Route::get('/siswa-edit/{id}', 'SiswaController@edit')->name('admin.siswa.edit');
+    Route::post('/siswa', 'SiswaController@store')->name('admin.store.siswa');
+    Route::patch('/siswa-edit/{id}', 'SiswaController@update')->name('admin.update.siswa');
+    Route::get('/siswa-delete/{id}', 'SiswaController@destroy')->name('admin.destroy.siswa');
 
 
     Route::get('/pesan', 'HomeController@pesan')->name('admin.pesan');

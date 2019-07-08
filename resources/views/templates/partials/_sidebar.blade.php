@@ -7,8 +7,6 @@
             </li>
             <li><a href="{{ route('admin.berita') }}"><i class="fa fa-newspaper-o"></i> Manajement Berita </a>
             </li>
-            <li><a href="{{ route('admin.user') }}"><i class="fa fa-user"></i> Manajement User </a>
-            </li>
             <li><a href="{{ route('admin.siswa') }}"><i class="fa fa-users"></i> Data Siswa </a>
             </li>
             <li><a href="{{ route('admin.guru') }}"><i class="fa fa-suitcase"></i> Data Guru </a>

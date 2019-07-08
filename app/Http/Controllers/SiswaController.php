@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Siswa;
 
 class SiswaController extends Controller
 {
@@ -18,7 +19,9 @@ class SiswaController extends Controller
 
     public function index()
     {
-        return view ('pages.siswa.siswa');
+        $data = Siswa::where('status', '1')->get();
+        //dd($data);
+        return view ('pages.siswa.siswa', compact('data'));
     }
 
     /**
@@ -39,7 +42,20 @@ class SiswaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $image_file = $request->file('gambar');
+        $filename = time().'.'.$image_file->getClientOriginalExtension();
+        $destinationPath = public_path('/upload/siswa');
+        $image_file->move($destinationPath, $filename);
+        $siswa= new Siswa();
+        $siswa->nis=$request->nis;
+        $siswa->gambar=$filename;
+        $siswa->nama=$request->nama;
+        $siswa->jk=$request->jk;
+        $siswa->kelas=$request->kelas;
+        $siswa->alamat=$request->alamat;
+        $siswa->save();
+
+        return redirect()->route('admin.siswa')->with('create', 'Data berhasil ditambahkan !');
     }
 
     /**
@@ -59,9 +75,10 @@ class SiswaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
-        return view ('pages.siswa.edit');
+        $data = Siswa::find($id);
+        return view ('pages.siswa.edit', compact('data'));
     }
 
     /**
@@ -73,7 +90,25 @@ class SiswaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+    
+        $siswa= Siswa::find($id);
+        $image_file = $request->file('gambar');
+        if ($image_file =='') {
+            $siswa->gambar = $request->old_gambar;
+        } else {
+            $filename = time().'.'.$image_file->getClientOriginalExtension();
+            $destinationPath = public_path('/upload/siswa');
+            $image_file->move($destinationPath, $filename);
+            $siswa->gambar=$filename;
+        }
+        $siswa->nama=$request->nama;
+        $siswa->jk=$request->jk;
+        $siswa->kelas=$request->kelas;
+        $siswa->alamat=$request->alamat;
+        $siswa->update();
+
+        return redirect()->route('admin.siswa')->with('update', 'Data berhasil diubah !');
     }
 
     /**
@@ -84,6 +119,8 @@ class SiswaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $siswa=Siswa::find($id);
+        $siswa->update(['status'=>'0']);
+        return redirect()->route('admin.siswa')->with('delete', 'Data berhasil dihapus !');
     }
 }

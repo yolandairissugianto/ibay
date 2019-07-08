@@ -15,11 +15,11 @@
 
 <body>
     <!-- Preloader Start -->
-    {{-- <div id="preloader">
+    <div id="preloader">
         <div class="preload-content">
             <div id="world-load"></div>
         </div>
-    </div> --}}
+    </div>
     <!-- Preloader End -->
 
     <!-- ***** Header Area Start ***** -->
@@ -65,9 +65,9 @@
         <!-- Hero Slides Area -->
         <div class="hero-slides owl-carousel">
             <!-- Single Slide -->
-            <div class="single-hero-slide bg-img" style="background-image: url({{ asset('assets2/img/blog-img/sekolah.jpg') }});"></div>
+            <div class="single-hero-slide bg-img background-overlay" style="background-image: url({{ asset('assets2/img/blog-img/sekolah.jpg') }});"></div>
             <!-- Single Slide -->
-            <div class="single-hero-slide bg-img" style="background-image: url({{ asset('assets2/img/blog-img/sekolah2.jpg') }});"></div>
+            <div class="single-hero-slide bg-img background-overlay" style="background-image: url({{ asset('assets2/img/blog-img/sekolah2.jpg') }});"></div>
         </div>
 
     </div>

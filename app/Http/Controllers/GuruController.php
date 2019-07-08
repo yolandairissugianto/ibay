@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Guru;
+use Illuminate\Support\Facades\Storage;
 
 class GuruController extends Controller
 {
@@ -18,7 +20,8 @@ class GuruController extends Controller
 
     public function index()
     {
-        return view ('pages.guru.guru');
+        $data = Guru::all();
+        return view ('pages.guru.guru', compact('data'));
     }
 
     /**
@@ -39,7 +42,12 @@ class GuruController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $this->validate($request, [
+        //     'nip' => 'required',
+        //     'gambar' => 'required|max:2048|mimes:jpeg,png,jpg',
+        //     'nama' => 'required'
+        //     'tempat_lahir'
+        // ]);
     }
 
     /**
@@ -59,7 +67,7 @@ class GuruController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
         return view ('pages.guru.edit');
     }

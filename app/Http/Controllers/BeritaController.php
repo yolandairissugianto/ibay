@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Berita;
+use Illuminate\Support\Facades\Storage;
 
 class BeritaController extends Controller
 {
@@ -19,7 +21,8 @@ class BeritaController extends Controller
 
     public function index()
     {
-        return view('pages.berita.berita');
+        $data = Berita::where('status','1')->get();
+        return view('pages.berita.berita', compact('data'));
     }
 
     /**
@@ -40,7 +43,20 @@ class BeritaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'gambar' => 'required|max:2048|mimes:jpeg,png,jpg',
+            'judul' => 'required|min:5',
+            'isi_berita' => 'required'
+        ]);
+        $berita = new Berita();
+        $berita->judul = $request->judul;
+        $berita->isi_berita = $request->isi_berita;
+
+        $gambar = $request->file('gambar')->store('berita');
+        
+        $berita->gambar = $gambar;
+        $berita->save();
+        return redirect()->route('admin.berita')->with('create', 'Data berhasil ditambahkan !');
     }
 
     /**
@@ -60,9 +76,10 @@ class BeritaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
-        return view ('pages.berita.edit');
+        $berita = Berita::find($id);
+        return view ('pages.berita.edit', compact('berita'));
     }
 
     /**
@@ -74,7 +91,23 @@ class BeritaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'judul' => 'required|min:5',
+            'isi_berita' => 'required',
+            'gambar' => 'max:2048|mimes:jpeg,png,jpg'
+        ]);
+
+        $berita = Berita::where('id', $id)->first();
+        $berita->judul = $request->judul;
+        $berita->isi_berita = $request->isi_berita;
+        if($request->gambar != null) {
+            Storage::delete($berita->gambar);
+            $gambar = $request->file('gambar')->store('berita');
+            $berita->gambar = $gambar;
+        }
+
+        $berita->update();
+        return redirect()->route('admin.berita')->with('update', 'Data berhasil diubah !');
     }
 
     /**
@@ -83,8 +116,10 @@ class BeritaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Berita $berita)
     {
-        //
+        $berita->delete();
+        $berita->update(['status'=>'0']);
+        return redirect()->route('admin.berita')->with('create', 'Data berhasil dihapus !');
     }
 }

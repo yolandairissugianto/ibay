@@ -20,59 +20,59 @@
             <div class="x_content">
               <br />
               
-              <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+            <form id="demo-form2" action="{{route('admin.update.siswa',$data->id)}}" method="POST" enctype="multipart/form-data" data-parsley-validate class="form-horizontal form-label-left">
+                @csrf
+                {{method_field('PATCH')}}
                 <div class="item form-group">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="gambar">Gambar <span class="required">*</span>
                   </label>
                   <div class="col-md-6 col-sm-6 col-xs-12 custom-file">
-                    <input type="file" id="gambar" name="gambar" required="required" class="form-control custom-file-input col-md-7 col-xs-12">
+                  <input type="hidden" name="old_gambar" value="{{$data->gambar}}">
+                    <input type="file" id="gambar" name="gambar" class="form-control custom-file-input col-md-7 col-xs-12">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nis">NIS<span class="required">*</span>
+                  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nis" >NIS<span class="required">*</span>
                   </label>
                   <div class="col-md-6 col-sm-6 col-xs-12">
-                    <input type="text" id="nis" required="required" class="form-control col-md-7 col-xs-12">
+                  <input type="text" id="nis" name="nis" required="required" class="form-control col-md-7 col-xs-12" value="{{$data->nis}}" disabled>
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nama-siswa">Nama Siswa<span class="required">*</span>
                   </label>
                   <div class="col-md-6 col-sm-6 col-xs-12">
-                    <input type="text" id="nama-guru" name="nama-siswa" required="required" class="form-control col-md-7 col-xs-12">
+                    <input type="text" id="nama-guru" name="nama" required="required" class="form-control col-md-7 col-xs-12" value="{{$data->nama}} onkeypress="return lettersOnly(event)">
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="control-label col-md-3 col-sm-3 col-xs-12">Jenis Kelamin</label>
                   <div class="col-md-6 col-sm-6 col-xs-12">
-                    <div id="gender" class="btn-group" data-toggle="buttons">
-                      <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                        <input type="radio" name="gender" value="male"> &nbsp; Laki-Laki &nbsp;
-                      </label>
-                      <label class="btn btn-primary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                        <input type="radio" name="gender" value="female"> Perempuan
-                      </label>
-                    </div>
+                    <select class="form-control" name="jk">
+                      <option>Pilih</option>
+                      <option value="laki_laki" @if ($data->jk == 'laki_laki'){{"selected"}}@endif>Laki - Laki</option>
+                      <option value="perempuan" @if ($data->jk == 'perempuan'){{"selected"}}@endif>Perempuan</option>
+                    </select>
                   </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="kelas">Kelas<span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input type="text" id="kelas" name="kelas" required="required" class="form-control col-md-7 col-xs-12">
+                        <input type="text" id="kelas" name="kelas" required="required" class="form-control col-md-7 col-xs-12" value="{{$data->kelas}}">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="alamat">Alamat<span class="required">*</span>
                     </label>
                     <div class="col-md-6 col-sm-6 col-xs-12">
-                        <input type="textarea" id="alamat" name="alamat" required="required" class="form-control col-md-7 col-xs-12">
+                        <input type="textarea" id="alamat" name="alamat" required="required" class="form-control col-md-7 col-xs-12" value="{{$data->alamat}}">
                     </div>
                 </div>
                 <div class="ln_solid"></div>
                 <div class="form-group">
                   <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                        <a href="{{route('siswa')}}" class="btn btn-round btn-danger">Batal</a>
+                        <a href="{{route('admin.siswa')}}" class="btn btn-round btn-danger">Batal</a>
                         {{-- <button type="submit" class="btn btn-round btn-danger">Cancel</button> --}}
                         <button id="send" type="submit" class="btn btn-round btn-success">Simpan</button>
                   </div>
@@ -83,4 +83,16 @@
         </div>
       </div>
     </div>
+
+    <script>
+      function lettersOnly(){
+        var charCode = event.keyCode;
+        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode <123) || charCode == 8){
+          return true;
+        } else {
+          return false;
+        }
+      }
+     </script>
+
 @endsection

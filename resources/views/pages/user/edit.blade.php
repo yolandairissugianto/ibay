@@ -45,7 +45,7 @@
           <div class="ln_solid"></div>
           <div class="form-group">
             <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                  <a href="{{route('user')}}" class="btn btn-round btn-danger">Batal</a>
+                  <a href="{{route('admin.user')}}" class="btn btn-round btn-danger">Batal</a>
                   {{-- <button type="submit" class="btn btn-round btn-danger">Cancel</button> --}}
                   <button id="send" type="submit" class="btn btn-round btn-success">Simpan</button>
             </div>
@@ -56,4 +56,4 @@
   </div>
 </div>
 </div>
-@endsection
+@endsectionx

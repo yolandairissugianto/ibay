@@ -4,7 +4,7 @@
 
 <div class="page-title">
   <div class="title_left">
-    <h3>Tabel Guru</h3>
+    <h3>Kritik dan Saran</h3>
   </div>
 </div>
 
