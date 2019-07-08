@@ -48,6 +48,21 @@ class GuruController extends Controller
         //     'nama' => 'required'
         //     'tempat_lahir'
         // ]);
+
+        $image_file = $request->file('gambar');
+        $filename = time().'.'.$image_file->getClientOriginalExtension();
+        $destinationPath = public_path('/upload/guru');
+        $image_file->move($destinationPath, $filename);
+        $guru = new Guru();
+        $guru->nip=$request->nip;
+        $guru->gambar=$filename;
+        $guru->nama=$request->nama;
+        $guru->jk=$request->jk;
+        $guru->tempat_lahir=$request->tempat_lahir;
+        $guru->tanggal_lahir=$request->tanggal_lahir;
+        $guru->save();
+
+        return redirect()->route('admin.guru')->with('create', 'Data berhasil ditambahkan !');
     }
 
     /**
@@ -69,7 +84,8 @@ class GuruController extends Controller
      */
     public function edit()
     {
-        return view ('pages.guru.edit');
+        $data = Guru::find($id);
+        return view ('pages.guru.edit', compact('data'));
     }
 
     /**
@@ -81,7 +97,23 @@ class GuruController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $guru = Guru::find($id);
+        $image_file = $request->file('gambar');
+        if ($image_file =='') {
+            $guru->gambar = $request->old_gambar;
+        } else {
+            $filename = time().'.'.$image_file->getClientOriginalExtension();
+            $destinationPath = public_path('/upload/siswa');
+            $image_file->move($destinationPath, $filename);
+            $guru->gambar=$filename;
+        }
+        $guru->nama=$request->nama;
+        $guru->jk=$request->jk;
+        $guru->tempat_lahir=$request->tempat_lahir;
+        $guru->tanggal_lahir=$request->tanggal_lahir;
+        $guru->update();
+
+        return redirect()->route('admin.guru')->with('update', 'Data berhasil diubah !');
     }
 
     /**
@@ -92,6 +124,8 @@ class GuruController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $guru=Guru::find($id);
+        $guru->update(['status'=>'0']);
+        return redirect()->route('admin.guru')->with('delete', 'Data berhasil dihapus !');
     }
 }
